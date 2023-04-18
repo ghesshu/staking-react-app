@@ -29,12 +29,19 @@ const NavPanel = (props) => {
     }
 
     useEffect(() => {
+      const checkAccount = async () => {
         if (window.ethereum && window.ethereum.selectedAddress) {
           setConnectBtn('Account Connected');
           setAccounts([window.ethereum.selectedAddress]);
-          window.location.reload(); // Reload the page
+          setConnectBtn('Account Connected');
+          setAccounts([window.ethereum.selectedAddress]);
+          // window.location.reload(); // refresh the page
         }
-      }, []);
+      };
+    
+      checkAccount();
+    }, []);
+    
 
     
     // const [active, setActive] = useState('')
@@ -54,6 +61,7 @@ const NavPanel = (props) => {
           alert("Your MetaMask account is already connected");
           setConnectBtn('Account Connected');
           setAccounts([window.ethereum.selectedAddress]);
+
           return;
         }
 
