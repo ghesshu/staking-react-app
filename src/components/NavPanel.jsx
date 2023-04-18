@@ -32,6 +32,7 @@ const NavPanel = (props) => {
         if (window.ethereum && window.ethereum.selectedAddress) {
           setConnectBtn('Account Connected');
           setAccounts([window.ethereum.selectedAddress]);
+          window.location.reload(); // Reload the page
         }
       }, []);
 
