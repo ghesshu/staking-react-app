@@ -69,7 +69,7 @@ const NavPanel = (props) => {
         // Assign the value returned by eth_requestAccounts to the accounts variable
         const updatedAccounts = await window.ethereum.request({ method: "eth_requestAccounts" });
         setAccounts(updatedAccounts);
-        setConnectBtn('Account Connected');
+        setConnectBtn(accounts[0]);
       } catch (err) {
         console.log(err);
       } 
