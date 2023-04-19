@@ -3,6 +3,7 @@ import close from '../assets/close.png'
 import hamburger from '../assets/hamburger.png'
 import detectEthereumProvider from '@metamask/detect-provider'
 import { Link } from 'react-router-dom'
+import './components.css'
 
 
 const NavPanel = (props) => {
@@ -84,16 +85,16 @@ const NavPanel = (props) => {
   return (
     <div>
     {/* Navbar  */}
-    <nav className='z-20 w-screen fixed flex justify-between items-center p-4 bg-neutral-800 shadow-2xl'>
-        <div className="flex space-x-4">
-        <div className="flex space-x-4 items-cente md:w-64 border-r-4 border-green-700">
-            <button onClick={openBtn} className='lg:hidden'>
+    <nav className='z-10 w-screen  fixed flex justify-between items-center p-4 bg-white text-black shadow-xl md:shadow-sm'>
+        <div className="flex space-x-24">
+        <div className="flex space-x-4 items-cente md:w-64 ">
+            <button onClick={openBtn} className='lg:hidden ml-'>
                 <img src={hamburger} alt="" className='h-7' />
             </button>
 
-            <h1 className="hidden md:block font-bold text-3xl text-green-700">
+            {/* <h1 className="hidden md:block font-bold text-3xl text-green-700">
                 AGRITECH
-            </h1>
+            </h1> */}
         </div>
 
         <button onClick={closeBtn} className={`${closeClass}`}>
@@ -109,20 +110,32 @@ const NavPanel = (props) => {
     <section className="text-white">
     <div className="flex justify-between">
     {/* Side Panel  */}
-    <div className={` ${panel} z-10 fixed lg:static lg:flex mt-14 flex-col bg-neutral-800 h-screen w-80 px-4 space-y-`}>
+    <div id='navPanel' className={` ${panel} z-0 md:z-20 fixed md:static  lg:flex flex-col bg-green-950 h-screen w-80 px-4 space-y- `}>
+      <div className="text-white text-center p-6 font-bold text-xl">
+      <h1>AGRITECH</h1>
+      </div>
+    <div className="mt-">
     <Link to="/">
-        <button className={` hover:bg-green-700 rounded-xl   font-bold  flex w-full items-center space-x-2 px-6 mt-9 py-6 border-b-neutral-800 hover:border-b-green-700   transition duration-300 ease-in-out border-b-4  ${homeActive}`}>Home</button>
+        <button className={` hover:bg-green-700 rounded-xl   font-bold  flex w-full items-center space-x-2 px-6 mt-9 py-6 border-b-green-950 hover:border-b-green-950   transition duration-300 ease-in-out border-b-4  ${homeActive}`}>Home</button>
     </Link>
     <Link to="/swap">
-        <button className={` hover:bg-green-700 rounded-xl font-bold    flex w-full items-center space-x-2 px-6 mt-1 py-6 border-b-neutral-800 hover:border-b-green-700   transition duration-300 ease-in-out border-b-4 ${swapActive}`}>Swap</button>
+        <button className={` hover:bg-green-700 rounded-xl font-bold    flex w-full items-center space-x-2 px-6 mt-1 py-6 border-b-green-950 hover:border-b-green-950   transition duration-300 ease-in-out border-b-4 ${swapActive}`}>Swap</button>
     </Link>
     <Link to="/staking">
-        <button className={` hover:bg-green-700 rounded-xl   font-bold  flex w-full items-center space-x-2 px-6 mt-1 py-6 border-b-neutral-800 hover:border-b-green-700   transition duration-300 ease-in-out border-b-4 ${stakingActive}`}>Staking</button>
+        <button className={` hover:bg-green-700 rounded-xl   font-bold  flex w-full items-center space-x-2 px-6 mt-1 py-6 border-b-green-950 hover:border-b-green-700   transition duration-300 ease-in-out border-b-4 ${stakingActive}`}>Staking</button>
     </Link>
+
+
+    <div className="border-white border-t-2 mt-14">
+    <Link to="/staking">
+        <button className={` hover:bg-green-700 rounded-xl   font-bold  flex w-full items-center space-x-2 px-6 mt-4 py-6 border-b-green-950 hover:border-b-green-700   transition duration-300 ease-in-out border-b-4 ${stakingActive}`}>FAQ</button>
+    </Link>
+    </div>
+    </div>
     </div>
 
     {/* Content  */}
-    <div className="w-screen mt-14 pt-11 xl:p-24 text-white mx-6">
+    <div className="w-screen mt-14 pt-11 xl:p-24 bg-white">
         {pageContent}
     </div>
     </div>

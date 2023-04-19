@@ -8,7 +8,7 @@ import Staking from "./routes/Staking";
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
+    <div className="App bg-white">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/staking" element={<Staking />} />
