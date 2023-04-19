@@ -92,8 +92,8 @@ const StakingContent = () => {
             </div>
 
             <div className=" flex flex-col space-y-4">
-              <button className='font-bold text-green-800 bg-white px-4 py-1'>Harvest</button>
-              <button onClick={unStaking} className='font-bold text-green-800 bg-white px-4 py-1'>UnStake</button>
+              <button className='font-bold text-green-800 bg-white px-4 py-1 border-2  hover:text-white hover:bg-green-800 duration-500 transition ease-in-out'>Harvest</button>
+              <button onClick={unStaking} className='font-bold text-green-800 bg-white px-4 py-1 border-2  hover:text-white hover:bg-green-800 duration-500 transition ease-in-out'>UnStake</button>
             </div>
           </div>
 
