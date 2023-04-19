@@ -31,6 +31,13 @@ export async function stake(amount) {
   // Staking successful
 }
 
+  // Perform unstaking
+  export async function unstake(amount) {
+    const stakingContract = await getStakingContract();
+    await stakingContract.unstake(amount);
+    // Unstaking successful
+  }
+
 // call balanceOf function and retrieve balance for given account
 export async function getTokenBalance(account) {
   const provider = new Web3Provider(window.ethereum);

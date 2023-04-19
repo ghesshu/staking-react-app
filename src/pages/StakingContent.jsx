@@ -1,5 +1,5 @@
 import React from 'react';
-import { stake, getTokenBalance } from '../contract/contract'
+import { stake, getTokenBalance, unstake } from '../contract/contract'
 import { useRef, useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { formatEther } from 'ethers';
@@ -26,6 +26,24 @@ const StakingContent = () => {
       alert(error)
     }
   }
+
+
+  const unStaking = async () => {
+    try {
+      const amount = amountRef.current.value;
+      // const amount = BigInt(Math.floor(+amtstr * 10**18));
+      if (isNaN(amount) || amount <= BigInt(0)) {
+        alert("Please enter a valid amount.");
+        return; // stop execution of the function
+      }
+      await unstake(amount, accounts[0]);
+    } catch(error) {
+      console.error(error);
+      alert(error);
+    }
+  }
+  
+
 
     useEffect(() => {
     const fetchAddress = async () => {
@@ -75,7 +93,7 @@ const StakingContent = () => {
 
             <div className=" flex flex-col space-y-4">
               <button className='font-bold text-green-800 bg-white px-4 py-1'>Harvest</button>
-              <button className='font-bold text-green-800 bg-white px-4 py-1'>UnStake</button>
+              <button onClick={unStaking} className='font-bold text-green-800 bg-white px-4 py-1'>UnStake</button>
             </div>
           </div>
 
