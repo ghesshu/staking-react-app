@@ -1,8 +1,9 @@
 import React from 'react';
-import { stake, getTokenBalance, unstake } from '../contract/contract'
+import { stake, getTokenBalance, unstake, claimReward, getTotalRewards } from '../contract/contract'
 import { useRef, useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { formatEther } from 'ethers';
+import { balanceOf } from '../contract/contract';
 
 const StakingContent = () => {
 
@@ -10,8 +11,10 @@ const StakingContent = () => {
 
 
   const [address, setAddress] = useState("");
-  const [bal, setBal] = useState('');
+  const [bal, setBal] = useState('0.000');
   const amountRef = useRef();
+  const [rewards, setRewards] = useState('0.000');
+  // const [tbal, setTbal] = useState('0.000')
 
     const staking = async () => {
     try {
@@ -42,14 +45,39 @@ const StakingContent = () => {
       alert(error);
     }
   }
+
+  async function harvest() {
+    try {
+      await claimReward();
+      // Harvesting successful
+    } catch (error) {
+      // Handle error
+      alert('No Rewards to Claim')
+      // console.error(error);
+    }
+  }
+
   
+  useEffect(() => {
+    const fetchRewards = async () => {
+      try{
+        const rewardss = await getTotalRewards();
+        setRewards(rewardss);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+
+    fetchRewards();
+  }, []);
 
 
     useEffect(() => {
     const fetchAddress = async () => {
       try {
         const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        const balanceInWei = await window.ethereum.request({ method: 'eth_getBalance', params: [accounts[0], 'latest'] });
+        // const balanceInWei = await window.ethereum.request({ method: 'eth_getBalance', params: [accounts[0], 'latest'] });
+        const balanceInWei = await balanceOf(accounts[0]);
         const balanceInEther = formatEther(balanceInWei);
         setBal(balanceInEther)
         setAddress(accounts[0]);
@@ -88,11 +116,12 @@ const StakingContent = () => {
           <div className="md:w-1/2 flex justify-between p-4 border-2 items-center ">
             <div className="">
               <h1>Pending Reward</h1>
-              <h1 className='font-bold'>0.0000</h1>
+              <h1 className='font-bold'>{rewards}</h1>
+
             </div>
 
             <div className=" flex flex-col space-y-4">
-              <button className='font-bold text-green-800 bg-white px-4 py-1 border-2  hover:text-white hover:bg-green-800 duration-500 transition ease-in-out'>Harvest</button>
+              <button onClick={harvest} className='font-bold text-green-800 bg-white px-4 py-1 border-2  hover:text-white hover:bg-green-800 duration-500 transition ease-in-out'>Harvest</button>
               <button onClick={unStaking} className='font-bold text-green-800 bg-white px-4 py-1 border-2  hover:text-white hover:bg-green-800 duration-500 transition ease-in-out'>UnStake</button>
             </div>
           </div>
