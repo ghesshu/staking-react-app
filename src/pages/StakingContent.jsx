@@ -29,6 +29,7 @@ const StakingContent = () => {
     } catch (error) {
       alert(error)
     }
+    window.location.reload();
   }
 
 
@@ -127,11 +128,11 @@ const StakingContent = () => {
             <h1 className='font-extrabold'>{stakebal}</h1>
           </div>
           <div className="">
-            <h1 className=''>APR</h1>
+            <h1 className=''>Estimated APR</h1>
             <h1 className='font-extrabold'>1170%</h1>
           </div>
           <div className="">
-            <h1 className='font-bold'>End Date</h1>
+            <h1 className='font-bold'>Disbursement Date</h1>
             <h1>25 - 30, April</h1>
           </div>
           </div>

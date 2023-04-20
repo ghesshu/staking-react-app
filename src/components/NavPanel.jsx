@@ -31,16 +31,18 @@ const NavPanel = (props) => {
 
     useEffect(() => {
       const checkAccount = async () => {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
         if (window.ethereum && window.ethereum.selectedAddress) {
-          setConnectBtn('Account Connected');
+          setConnectBtn(accounts[0]);
           setAccounts([window.ethereum.selectedAddress]);
-          setConnectBtn('Account Connected');
+          setConnectBtn(accounts[0]);
           setAccounts([window.ethereum.selectedAddress]);
           // window.location.reload(); // refresh the page
-        }
+        } 
       };
     
       checkAccount();
+      
     }, []);
     
 
@@ -54,13 +56,14 @@ const NavPanel = (props) => {
   const connectWallet = async (e) => {
     e.preventDefault();
     const provider = await detectEthereumProvider();
+    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
     
     if (provider) {
       try {
         // Check if already connected
         if (window.ethereum && window.ethereum.selectedAddress) {
           alert("Your MetaMask account is already connected");
-          setConnectBtn('Account Connected');
+          setConnectBtn(accounts[0]);
           setAccounts([window.ethereum.selectedAddress]);
 
           return;
@@ -76,6 +79,7 @@ const NavPanel = (props) => {
     } else {
       setConnectBtn('Install MetaMask')
     }
+    window.location.reload();
   };
       
       
