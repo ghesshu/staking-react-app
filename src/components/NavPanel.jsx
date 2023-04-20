@@ -10,7 +10,7 @@ const NavPanel = (props) => {
 
    
 
-    const {homeActive, swapActive, stakingActive, pageContent} = props
+    const {homeActive, swapActive, stakingActive, pageContent, faqActive} = props
     const [accounts, setAccounts] = useState([]);
     const [connectBtn, setConnectBtn] = useState('Connect Wallet')
     const [panel, setPanel] = useState('hidden')
@@ -141,8 +141,8 @@ const NavPanel = (props) => {
 
 
     <div className="border-white border-t-2 mt-14">
-    <Link to="/staking">
-        <button className={` hover:bg-green-950 rounded-xl   font-bold  flex w-full items-center space-x-2 px-6 mt-4 py-6 border-b-neutral-900 hover:border-b-neutral-900   transition duration-300 ease-in-out border-b-4 ${stakingActive}`}>FAQ</button>
+    <Link to="/faq">
+        <button className={` hover:bg-green-950 rounded-xl   font-bold  flex w-full items-center space-x-2 px-6 mt-4 py-6 border-b-neutral-900 hover:border-b-neutral-900   transition duration-300 ease-in-out border-b-4 ${faqActive}`}>FAQ</button>
     </Link>
     </div>
     </div>
