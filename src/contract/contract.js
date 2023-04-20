@@ -59,6 +59,19 @@ export const balanceOf = async (address) => {
   return rewards;
 }
 
+// Define the function to call calculateReward
+export async function getReward(address) {
+  const stakingContract = await getStakingContract();
+  const rewards = await stakingContract.calculateReward(address);
+  return rewards;
+}
+
+
+// Export the getStakedBalance function
+export const getStakedBalance = async (address) => {
+  const stakingContract = await getStakingContract();
+  return await stakingContract.stakedBalance(address);
+};
 
 
 // call balanceOf function and retrieve balance for given account

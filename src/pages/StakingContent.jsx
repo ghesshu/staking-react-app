@@ -3,7 +3,7 @@ import { stake, getTokenBalance, unstake, claimReward, getTotalRewards } from '.
 import { useRef, useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { formatEther } from 'ethers';
-import { balanceOf } from '../contract/contract';
+import { balanceOf, getReward, getStakedBalance } from '../contract/contract';
 
 const StakingContent = () => {
 
@@ -14,7 +14,8 @@ const StakingContent = () => {
   const [bal, setBal] = useState('0.000');
   const amountRef = useRef();
   const [rewards, setRewards] = useState('0.000');
-  // const [tbal, setTbal] = useState('0.000')
+  const [stakebal, setStakebal] = useState('0.000')
+  // const [pendingR, setpendingR] = useState('0.000')
 
     const staking = async () => {
     try {
@@ -58,18 +59,42 @@ const StakingContent = () => {
   }
 
   
-  // useEffect(() => {
-  //   const fetchRewards = async () => {
-  //     try{
-  //       const rewardss = await getTotalRewards();
-  //       setRewards(rewardss);
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchStakebal = async () => {
+      try{
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        const sbal = await getStakedBalance(accounts[0]);
+        const sbalNum = Number(sbal.toString()) / 10 ** 18; // convert BigInt to number and divide by 10^18 to get the value in ETH
+        if(!sbalNum) {
+          setStakebal('0.000')
+        }else{
+          setStakebal(sbalNum)
+          // console.log(sbalNum)
+        }
+        // setStakebal(sbal);
+      } catch (error) {
+        console.log(error)
+      }
+    };
 
-  //   fetchRewards();
-  // }, []);
+    fetchStakebal();
+  }, []);
+
+  useEffect(() => {
+    const calcReward = async () => {
+      try{
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        const preward = await getReward(accounts[0])
+        const conReward = Number(preward.toString()) / 10 ** 18; // convert BigInt to number and divide by 10^18 to get the value in ETH
+        setRewards(conReward);
+        console.log(conReward)
+      } catch(error){
+        console.log(error)
+      }
+    }
+
+    calcReward();
+  })
 
 
     useEffect(() => {
@@ -98,12 +123,12 @@ const StakingContent = () => {
 
           <div className="md:w-4/6 flex justify-between w-full">
           <div className="">
-            <h1 className='font-bold'>Token Amount</h1>
-            <h1>Earned</h1>
+            <h1 className=''>Stake Balance</h1>
+            <h1 className='font-extrabold'>{stakebal}</h1>
           </div>
           <div className="">
-            <h1 className='font-bold'>APR</h1>
-            <h1>170%</h1>
+            <h1 className=''>APR</h1>
+            <h1 className='font-extrabold'>1170%</h1>
           </div>
           <div className="">
             <h1 className='font-bold'>End Date</h1>
@@ -116,7 +141,7 @@ const StakingContent = () => {
           <div className="md:w-1/2 flex justify-between p-4 border-2 items-center ">
             <div className="">
               <h1>Pending Reward</h1>
-              <h1 className='font-bold'>{rewards}</h1>
+              <h1 className='font-bold  text-xs'>{rewards}</h1>
 
             </div>
 
