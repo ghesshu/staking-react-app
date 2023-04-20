@@ -48,7 +48,7 @@ const StakingContent = () => {
 
   async function harvest() {
     try {
-      await claimReward();
+      await getTotalRewards();
       // Harvesting successful
     } catch (error) {
       // Handle error
@@ -58,18 +58,18 @@ const StakingContent = () => {
   }
 
   
-  useEffect(() => {
-    const fetchRewards = async () => {
-      try{
-        const rewardss = await getTotalRewards();
-        setRewards(rewardss);
-      } catch (error) {
-        console.log(error)
-      }
-    };
+  // useEffect(() => {
+  //   const fetchRewards = async () => {
+  //     try{
+  //       const rewardss = await getTotalRewards();
+  //       setRewards(rewardss);
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   };
 
-    fetchRewards();
-  }, []);
+  //   fetchRewards();
+  // }, []);
 
 
     useEffect(() => {

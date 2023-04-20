@@ -55,7 +55,7 @@ export const balanceOf = async (address) => {
   // Get the total rewards
   export async function getTotalRewards() {
   const stakingContract = await getStakingContract();
-  const rewards = await stakingContract.getTotalRewards();
+  const rewards = await stakingContract.claimRewards();
   return rewards;
 }
 
