@@ -9,7 +9,7 @@ const Home = () => {
 
     // const [active, setActive] = useState('');
   return (
-    <div className='bg-white h-screen'>
+    <div className='bg-neutral-800 h-screen'>
 
     <div className="">
     <NavPanel pageContent={<HomeContent />} homeActive='bg-green-950 rounded-xl' />
