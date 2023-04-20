@@ -1,10 +1,10 @@
 import { ethers } from 'ethers';
 import { Web3Provider } from '@ethersproject/providers';
-import contractABI from './abi.json';
+import contractABI from './stakeabi.json';
 import tokenABI from './tokenabi.json';
 
 const abi = contractABI;
-const contractAddress = "0x0946FdAA8327D75f544A753B654F3B143CDd38D8";
+const contractAddress = "0x92f744927DE8e5E33051603c9B6D68eea7A4e517";
 const tokenAddress = "0xfdc50cCE489284B4737Bb557950297cb4f9Ed297";
 const provider = new Web3Provider(window.ethereum);
 const signer = provider.getSigner();

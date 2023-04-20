@@ -1,3 +1,73 @@
+const web3 = require('web3');
+const BN = web3.utils.BN;
+
+// Define the staking contract address and ABI
+const stakingContractAddress = '0x123...'; // Replace with actual contract address
+const stakingContractABI = [
+  // Define the contract's ABI
+  // ...
+];
+
+// Create a new instance of the staking contract
+const stakingContract = new web3.eth.Contract(stakingContractABI, stakingContractAddress);
+
+// Define the staking function that will stake a given amount of tokens
+module.exports.stakeTokens = async function(userAddress, amount) {
+  // Convert the amount to the appropriate units
+  const amountInWei = web3.utils.toWei(amount, 'ether');
+
+  // Call the staking contract's stake() function
+  await stakingContract.methods.stake(amountInWei).send({from: userAddress});
+
+  console.log(`Staked ${amount} tokens successfully!`);
+};
+
+// Define the unstaking function that will unstake a given amount of tokens
+module.exports.unstakeTokens = async function(userAddress, amount) {
+  // Convert the amount to the appropriate units
+  const amountInWei = web3.utils.toWei(amount, 'ether');
+
+  // Call the staking contract's unstake() function
+  await stakingContract.methods.unstake(amountInWei).send({from: userAddress});
+
+  console.log(`Unstaked ${amount} tokens successfully!`);
+};
+
+// Define the function to get the user's staked balance
+module.exports.getStakedBalance = async function(userAddress) {
+  // Call the staking contract's balanceOf() function to get the user's staked balance
+  const balanceInWei = await stakingContract.methods.balanceOf(userAddress).call();
+
+  // Convert the balance to the appropriate units
+  const balance = web3.utils.fromWei(balanceInWei, 'ether');
+
+  console.log(`User's staked balance is ${balance} tokens.`);
+
+  return balance;
+};
+
+// Define the function to get the user's unstaked balance
+module.exports.getUnstakedBalance = async function(userAddress) {
+  // Call the staking contract's balanceOfUnderlying() function to get the user's unstaked balance
+  const balanceInWei = await stakingContract.methods.balanceOfUnderlying(userAddress).call();
+
+  // Convert the balance to the appropriate units
+  const balance = web3.utils.fromWei(balanceInWei, 'ether');
+
+  console.log(`User's unstaked balance is ${balance} tokens.`);
+
+  return balance;
+};
+
+
+
+
+
+
+
+
+
+
 // // Load ethers library
 // import { ethers } from 'ethers';
 
