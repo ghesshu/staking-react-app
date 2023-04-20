@@ -4,10 +4,10 @@ import NavPanel from '../components/NavPanel'
 
 const Swap = () => {
   return (
-    <div className='bg-white h-screen'>
+    <div className='bg-neutral-800 h-screen'>
 
     <div className="">
-    <NavPanel pageContent={<SwapContent />} swapActive='bg-green-700 rounded-xl' />
+    <NavPanel pageContent={<SwapContent />} swapActive='bg-green-950 rounded-xl' />
     </div>
       
     </div>

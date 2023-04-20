@@ -2,7 +2,7 @@ import React from 'react'
 
 const HomeContent = () => {
   return (
-    <div className='bg-white mb-8 smd:mb-0'>
+    <div className='bg-neutral-800  mb-8 smd:mb-0'>
       <div className="mx-6">
         <h1 className='block md:hidden font-bold text-center text-3xl text-green-700'> AGRITECH</h1>
         <div className="flex flex-col max-w-6xl md:mx-7">
@@ -27,7 +27,7 @@ const HomeContent = () => {
 
         </div>
 
-        <div className="text-black mt-8">
+        <div className="text-white mt-8">
           <h1 className="font-bold text-2xl">Trade crypto & NFTs with confidence on Binance Smart Chain.</h1>
           <h1 className='text-xl'>Enjoy profitable yield farming and exchanging with the lowest fees in DeFi space!</h1>
         </div>

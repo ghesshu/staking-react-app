@@ -118,8 +118,8 @@ const StakingContent = () => {
 
   return (
     <div>
-       <div className="bg-green-800  text-white mx-4 md:mx-12">
-        <div className="flex justify-between p-4 border-b-2 ">
+       <div className="  bg-neutral-600 border-4 border-neutral-600 rounded-xl  text-white mx-4 md:mx-12">
+        <div className="flex justify-between p-4  ">
           <div className="hidden md:flex"></div>
 
           <div className="md:w-4/6 flex justify-between w-full">
@@ -138,8 +138,8 @@ const StakingContent = () => {
           </div>
         </div>
 
-        <div className="p-4 flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 ">
-          <div className="md:w-1/2 flex justify-between p-4 border-2 items-center ">
+        <div className="p-4 flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 bg-neutral-800 ">
+          <div className="md:w-1/2 flex justify-between p-4 border-2 border-neutral-600 items-center  ">
             <div className="">
               <h1>Pending Reward</h1>
               <h1 className='font-bold  text-xs'>{rewards}</h1>
@@ -152,13 +152,13 @@ const StakingContent = () => {
             </div>
           </div>
 
-          <div className="md:w-1/2 flex flex-col p-4 border-2 space-y-4 ">
+          <div className="md:w-1/2 flex flex-col p-4 border-2 border-neutral-600 space-y-4 ">
            <h1 className='font-bold'>Balance: <span>{bal}</span></h1>
            <div className="">
-            <input type="text" inputMode='numeric' ref={amountRef} className='w-full p-4 bg-green-800 border-2'  />
+            <input type="text" inputMode='numeric' ref={amountRef} className='w-full p-4 bg-neutral-800 border-2'  />
             <h1 className='f font-extrabold'>Max: 10,000,0000,0000  AGT</h1>
            </div>
-           <button onClick={staking} className='w-full text-green-800 border-white border-2 bg-white py-4 hover:text-white hover:bg-green-800 duration-500 transition ease-in-out'>
+           <button onClick={staking} className='w-full text-green-800 font-bold border-white border-2 bg-white py-4 hover:text-white hover:bg-green-800 duration-500 transition ease-in-out'>
             Stake
            </button>
           </div>

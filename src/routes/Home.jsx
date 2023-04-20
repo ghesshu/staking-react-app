@@ -12,7 +12,7 @@ const Home = () => {
     <div className='bg-white h-screen'>
 
     <div className="">
-    <NavPanel pageContent={<HomeContent />} homeActive='bg-green-700 rounded-xl' />
+    <NavPanel pageContent={<HomeContent />} homeActive='bg-green-950 rounded-xl' />
     </div>
       
     </div>
