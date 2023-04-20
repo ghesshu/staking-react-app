@@ -132,7 +132,7 @@ const StakingContent = () => {
           </div>
           <div className="">
             <h1 className='font-bold'>End Date</h1>
-            <h1>Invalid Date</h1>
+            <h1>25 - 30, April</h1>
           </div>
           </div>
         </div>
