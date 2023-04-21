@@ -1,5 +1,5 @@
 import React from 'react';
-import { stake, getTokenBalance, unstake, claimReward, getTotalRewards } from '../contract/contract'
+// import { stake, getTokenBalance, unstake, claimReward, getTotalRewards } from '../contract/contract'
 import { useRef, useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { formatEther } from 'ethers';

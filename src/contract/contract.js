@@ -16,6 +16,29 @@ export async function getStakingContract() {
   return stakingContract;
 }
 
+// import { ethers } from 'ethers';
+// import { Web3Provider } from '@ethersproject/providers';
+// import contractABI from './stakeabi.json';
+// import tokenABI from './tokenabi.json';
+
+// const abi = contractABI;
+// const contractAddress = "0x92f744927DE8e5E33051603c9B6D68eea7A4e517";
+// const tokenAddress = "0xfdc50cCE489284B4737Bb557950297cb4f9Ed297";
+
+// export async function getStakingContract() {
+//   let provider, signer;
+//   try {
+//     provider = new Web3Provider(window.ethereum);
+//     signer = provider.getSigner();
+//   } catch (error) {
+//     console.log(error);
+//     return null;
+//   }
+//   const stakingContract = new ethers.Contract(contractAddress, abi, signer);
+//   return stakingContract;
+// }
+
+
 export async function stake(amount) {
   const stakingContract = await getStakingContract();
 
